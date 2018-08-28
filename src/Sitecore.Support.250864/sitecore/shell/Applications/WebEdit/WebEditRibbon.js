@@ -267,8 +267,11 @@ function modalDialogLazyLoading() {
   top.scForm = { getTopModalDialog: window.scForm.getTopModalDialog, keymap: scSitecore.keymap || {}, translate: scSitecore.prototype.translate };
   top.dialogInit = scSitecore.prototype.initializeModalDialogs;
   top.initModalDialog = function (callbackFunc) {
-    var jqueryModalDialogsFrame = top.document.getElementById("jqueryModalDialogsFrame"); 
-	if (jqueryModalDialogsFrame) {
+   //start of sitecore.support.250864
+    //var jqueryModalDialogsFrame = top.document.getElementById("jqueryModalDialogsFrame"); 
+	var jqueryModalDialogsFrame = window.top.frames["jqueryModalDialogsFrame"];
+	//end of sitecore.support.250864
+    if (jqueryModalDialogsFrame) {
       execFunction(callbackFunc);
       return;
     }
